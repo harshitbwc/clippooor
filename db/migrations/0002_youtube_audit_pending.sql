@@ -1,0 +1,1 @@
+ALTER TABLE "channels" ADD COLUMN "youtube_audit_pending" boolean DEFAULT false NOT NULL;
