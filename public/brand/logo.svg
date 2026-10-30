@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 930 256" width="930" height="256" role="img" aria-label="Clippooor">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14141C"/><stop offset="1" stop-color="#050507"/></linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#FF2D4B"/></linearGradient>
+    <linearGradient id="cy" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3B57"/><stop offset="1" stop-color="#C4122F"/></linearGradient>
+  </defs>
+  <g transform="scale(0.5)">
+    <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+    <rect x="3" y="3" width="506" height="506" rx="113" fill="none" stroke="url(#edge)" stroke-width="6" stroke-opacity=".9"/>
+    <rect x="62" y="156" width="388" height="200" rx="26" fill="none" stroke="url(#cy)" stroke-width="12" stroke-dasharray="26 18"/>
+    <rect x="170" y="92" width="172" height="328" rx="34" fill="url(#red)"/>
+    <path d="M229 218 L229 294 L295 256 Z" fill="#fff" stroke="#fff" stroke-width="14" stroke-linejoin="round"/>
+  </g>
+  <text x="304" y="168" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="128" font-weight="800" letter-spacing="-4" fill="#0A0A0F">Clippooor</text>
+</svg>

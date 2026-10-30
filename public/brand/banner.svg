@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 500" width="1600" height="500" role="img" aria-label="Clippooor: turn one long video into a week of Shorts and Reels, on autopilot">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14141C"/><stop offset="1" stop-color="#050507"/></linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#FF2D4B"/></linearGradient>
+    <linearGradient id="cy" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#3B82F6"/></linearGradient>
+    <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF3B57"/><stop offset="1" stop-color="#C4122F"/></linearGradient>
+    <radialGradient id="glowC" cx="0.1" cy="0.05" r="0.65"><stop offset="0" stop-color="#22D3EE" stop-opacity=".30"/><stop offset="1" stop-color="#22D3EE" stop-opacity="0"/></radialGradient>
+    <radialGradient id="glowR" cx="0.95" cy="0.95" r="0.65"><stop offset="0" stop-color="#FF2D4B" stop-opacity=".50"/><stop offset="1" stop-color="#FF2D4B" stop-opacity="0"/></radialGradient>
+    <g id="play"><path d="M-14 -22 L-14 22 L24 0 Z" fill="#fff" stroke="#fff" stroke-width="8" stroke-linejoin="round"/></g>
+  </defs>
+
+  <rect width="1600" height="500" fill="#050507"/>
+  <rect width="1600" height="500" fill="url(#glowC)"/>
+  <rect width="1600" height="500" fill="url(#glowR)"/>
+
+  <g transform="translate(96 96) scale(0.25)">
+    <rect width="512" height="512" rx="116" fill="url(#bg)"/>
+    <rect x="3" y="3" width="506" height="506" rx="113" fill="none" stroke="url(#edge)" stroke-width="6" stroke-opacity=".9"/>
+    <rect x="62" y="156" width="388" height="200" rx="26" fill="none" stroke="url(#cy)" stroke-width="12" stroke-dasharray="26 18"/>
+    <rect x="170" y="92" width="172" height="328" rx="34" fill="url(#red)"/>
+    <path d="M229 218 L229 294 L295 256 Z" fill="#fff" stroke="#fff" stroke-width="14" stroke-linejoin="round"/>
+  </g>
+  <text x="248" y="176" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-2" fill="#fff">Clippooor</text>
+
+  <text font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="50" letter-spacing="-1" fill="#fff">
+    <tspan x="96" y="290">Turn one long video into a</tspan>
+    <tspan x="96" y="350">week of <tspan fill="#FF3B57">Shorts</tspan> and <tspan fill="#22D3EE">Reels</tspan>.</tspan>
+  </text>
+  <text x="96" y="410" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="500" fill="#fff" fill-opacity=".62">Upload once. Clipped, captioned and posted on autopilot.</text>
+
+  <g transform="translate(850 0)">
+    <rect x="0" y="170" width="250" height="140" rx="20" fill="#22D3EE" fill-opacity=".06" stroke="url(#cy)" stroke-width="3" stroke-dasharray="14 9"/>
+    <g transform="translate(125 240) scale(.9)"><use href="#play" opacity=".85"/></g>
+    <path d="M276 240 H330" stroke="#22D3EE" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12"/>
+    <path d="M322 226 L342 240 L322 254" fill="none" stroke="#22D3EE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g>
+      <rect x="370" y="110" width="96" height="260" rx="20" fill="url(#red)" opacity="1"/>
+      <rect x="370" y="110" width="96" height="260" rx="20" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="2"/>
+      <g transform="translate(418 240)"><use href="#play"/></g>
+      <text x="418" y="352" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" fill-opacity=".92">PART 1</text>
+      <rect x="486" y="70" width="96" height="260" rx="20" fill="url(#red)" opacity="0.88"/>
+      <rect x="486" y="70" width="96" height="260" rx="20" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="2"/>
+      <g transform="translate(534 200)"><use href="#play"/></g>
+      <text x="534" y="312" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" fill-opacity=".92">PART 2</text>
+      <rect x="602" y="150" width="96" height="260" rx="20" fill="url(#red)" opacity="0.76"/>
+      <rect x="602" y="150" width="96" height="260" rx="20" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="2"/>
+      <g transform="translate(650 280)"><use href="#play"/></g>
+      <text x="650" y="392" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#fff" fill-opacity=".92">PART 3</text>
+    </g>
+  </g>
+</svg>

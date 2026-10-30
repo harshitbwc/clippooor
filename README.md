@@ -94,6 +94,7 @@ See [`.env.example`](.env.example) for the full list. Never commit your real `.e
 | Modal | Worker credentials and endpoint |
 | Cloudflare R2 | Video storage |
 | Google / Meta | OAuth credentials for YouTube and Instagram |
+| Alerts (optional) | Slack or Discord webhook URL, notified when a background job fails |
 
 ### Scripts
 

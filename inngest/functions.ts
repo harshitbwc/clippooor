@@ -32,11 +32,21 @@ import {
   publishReelContainer,
 } from "@/lib/instagram";
 import { deleteObject, getObjectStream, getPublicUrl } from "@/lib/r2";
+import { sendAlert } from "@/lib/alerts";
+import { SCHEDULER_INTERVAL_MIN, isPostTimeDue } from "@/lib/schedule";
 
 const DEFAULT_CTA_TEXT = "Follow for more BTS";
 
 function errorMessage(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
+}
+
+// Runs once a function has exhausted all its retries, so a flaky step that
+// recovers on retry never pages anyone.
+function alertOnFailure(functionName: string) {
+  return async ({ error }: { error: Error }) => {
+    await sendAlert(`Clippooor: "${functionName}" failed after retries: ${error.message}`);
+  };
 }
 
 // Every clip cut from a source video shares that video's operator-provided
@@ -85,7 +95,11 @@ function igPollDelaySeconds(attempt: number): number {
 }
 
 export const ingestPipeline = inngest.createFunction(
-  { id: "ingest-pipeline", triggers: [{ event: "video/ingested" }] },
+  {
+    id: "ingest-pipeline",
+    triggers: [{ event: "video/ingested" }],
+    onFailure: alertOnFailure("ingest-pipeline"),
+  },
   async ({ event, step }) => {
     const sourceVideoId = event.data.sourceVideoId as string;
 
@@ -181,7 +195,11 @@ export const ingestPipeline = inngest.createFunction(
 );
 
 export const renderClipFn = inngest.createFunction(
-  { id: "render-clip", triggers: [{ event: "clip/approved" }] },
+  {
+    id: "render-clip",
+    triggers: [{ event: "clip/approved" }],
+    onFailure: alertOnFailure("render-clip"),
+  },
   async ({ event, step }) => {
     const clipId = event.data.clipId as string;
 
@@ -237,9 +255,20 @@ export const renderClipFn = inngest.createFunction(
 );
 
 export const dailyScheduler = inngest.createFunction(
-  { id: "daily-scheduler", triggers: [{ cron: "TZ=Asia/Kolkata 0 5,13,21 * * *" }] },
+  {
+    id: "daily-scheduler",
+    triggers: [{ cron: `*/${SCHEDULER_INTERVAL_MIN} * * * *` }],
+    onFailure: alertOnFailure("daily-scheduler"),
+  },
   async ({ step }) => {
-    const channels = await step.run("load-channels", () => listChannels());
+    // Each channel posts at its own times in its own timezone; only channels
+    // with a post time inside this tick's window get a clip scheduled. The
+    // clock is read inside a step so replays reuse the same answer.
+    const channels = await step.run("load-due-channels", async () => {
+      const now = new Date();
+      const all = await listChannels();
+      return all.filter((c) => isPostTimeDue(c.postTimes, c.scheduleTz, now));
+    });
 
     for (const channel of channels) {
       await step.run(`schedule-channel-${channel.id}`, async () => {
@@ -263,7 +292,11 @@ export const dailyScheduler = inngest.createFunction(
 );
 
 export const publishClip = inngest.createFunction(
-  { id: "publish-clip", triggers: [{ event: "publish/job.created" }] },
+  {
+    id: "publish-clip",
+    triggers: [{ event: "publish/job.created" }],
+    onFailure: alertOnFailure("publish-clip"),
+  },
   async ({ event, step }) => {
     const publishJobId = event.data.publishJobId as string;
 
